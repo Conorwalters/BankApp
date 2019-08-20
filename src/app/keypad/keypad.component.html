@@ -1,0 +1,7 @@
+<div class='keypad'>
+    <div class='row' *ngFor='let row of keyRows; index as i;' [ngClass]='{"last": i === (keyRows.length - 1)}'>
+        <button class='button primary-transparent' *ngFor='let key of row' (click)='onKeyPressed(key)'>
+                <span>{{key}}</span>
+            </button>
+    </div>
+</div>

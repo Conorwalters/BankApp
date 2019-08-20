@@ -1,1 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+    box-sizing: border-box;
+    font-family: 'Google Sans Regular', sans-serif;
+}
+
+html,
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+app-root {
+    height: 100%;
+    width: 100%;
+}

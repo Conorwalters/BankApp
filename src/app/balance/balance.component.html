@@ -1,0 +1,15 @@
+<div>
+    <button class="check-balance-button" (click)="checkbalance()">Check Balance!</button>
+</div>
+<div class="balance" *ngIf="this.isBalanceLabelVisible">
+    <i>Your balance is currently: </i> {{currentBalance$ | async}}
+</div>
+<br>
+<div>
+    <button class="withdraw-button" (click)="navigateToWithdraw()">Withdraw!</button>
+</div>
+<div>
+    <div>
+        <button class="sign-out" (click)="signout()">Sign Out!</button>
+    </div>
+</div>

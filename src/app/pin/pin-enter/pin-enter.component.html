@@ -1,0 +1,17 @@
+<div class="enter-pin-label">
+    Enter your Pin to access bank:
+</div>
+<br>
+<div class="submit-pin">
+    <input name="PinNumberInput" [(ngModel)]="pin" readonly /> <br>
+</div>
+<div class="error-message" *ngIf="this.errorMessageVisible">
+    <b>Error: {{error}}  </b>
+</div>
+<div>
+    <mnt-keypad class='keypad' (keyPress)='onKeyPressed($event)'></mnt-keypad>
+</div>
+<br>
+<div>
+    <button class="sign-in-button" (click)="submitPin()">Sign In!</button>
+</div>

@@ -1,0 +1,41 @@
+.enter-pin-label {
+    height: 5%;
+    color: #FAEBEFFF;
+}
+
+.submit-pin {
+    height: 2%;
+    position: relative;
+    text-align: center;
+    align-self: center;
+    width: 100%;
+}
+
+.error-message {
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
+.sign-in-button {
+    color: #2e2f3e;
+    padding: 15px 25px;
+    height: 50px;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+}
+
+.sign-in-button:hover {
+    background-color: #666;
+}
+
+.sign-in-button:active {
+    background-color: #FAEBEFFF;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+.keypad {
+    margin: 1em;
+}
