@@ -1,11 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PinEnterComponent } from './pin-enter.component';
-import { HttpClientModule } from '@angular/common/http';
 import { HttpTestingController, HttpClientTestingModule } from '@angular/common/http/testing';
 import { PinService } from '../pin.service';
-import { WithdrawService } from 'src/app/withdraw-component/withdraw.service';
-import { HttpClient } from 'selenium-webdriver/http';
 
 describe('PinEnterComponent', () => {
   let service: PinService;

@@ -1,0 +1,51 @@
+@import 'theme/colors';
+@import 'theme/fonts';
+@mixin primary() {
+    background-color: $primary-color;
+    color: $background-color;
+}
+
+@mixin primary-transparent() {
+    background-color: transparent;
+    border: 1px solid $primary-color;
+    color: $primary-color;
+}
+
+@mixin accent() {
+    background-color: $accent-color;
+    color: $background-color;
+}
+
+.button {
+    display: inline-block;
+    box-sizing: border-box;
+    font-family: 'Google Sans Regular';
+    font-size: 1em;
+    border: none;
+    outline: none;
+    border-radius: 0.125em;
+    min-height: 2.5em;
+    padding: 0 1.5em;
+    cursor: pointer;
+    &:hover {
+        background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
+    }
+    &.primary {
+        @include primary;
+    }
+    &.primary-transparent {
+        @include primary-transparent;
+    }
+    &.accent {
+        @include accent;
+    }
+}
+
+.textbox {
+    padding: 0.5em;
+    border: none;
+    border-radius: 3px;
+    background-color: #ffffff;
+    opacity: 1;
+    @include background-text;
+}

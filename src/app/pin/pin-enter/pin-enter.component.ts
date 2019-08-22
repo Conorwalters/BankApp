@@ -1,36 +1,47 @@
 import { Component } from '@angular/core';
-import { PinService } from '../pin.service';
+import { Store, select } from '@ngrx/store';
+import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { AppState } from 'src/app/state';
+import { isSignedIn, hasFailedAuth, resetAuthState, authenticate } from 'src/app/state/auth';
 
 @Component({
-  selector: 'app-pin-enter',
+  selector: 'app-sign-in',
   templateUrl: './pin-enter.component.html',
   styleUrls: ['./pin-enter.component.scss']
 })
-
 export class PinEnterComponent {
-  pin = '';
-  error = '';
-  errorMessageVisible = false;
-
-  constructor(public router: Router, public pinService: PinService) {
-  }
-
-  submitPin() {
-    this.pinService.enterPin(parseInt(this.pin, 10)).subscribe(() => {
-        this.router.navigate(['withdraw'])},
-        errorRes => this.error = errorRes.error.error
+  isSignedIn$ = this.store.pipe(
+    select(isSignedIn),
+    tap(signedIn => {
+      if (signedIn) {
+        this.router.navigateByUrl('/home');
+      }
+    })
+  );
+  hasFailedAuth$ = this.store.pipe(
+    select(hasFailedAuth),
+    tap(failed => {
+      if (failed) {
+        this.pin = null;
+      }
+    })
     );
-    if(this.error != '')
-    {
-    } else {
-      this.pin = '';
-      this.errorMessageVisible = true;
-    }
-    this.pin = '';
+
+  pin: number;
+
+  constructor(
+    private store: Store<AppState>,
+    private router: Router
+  ) { }
+
+  onSignInClick() {
+    this.store.dispatch(resetAuthState());
+    this.store.dispatch(authenticate({pin: this.pin}));
   }
 
   onKeyPressed(key: number) {
-    this.pin = `${this.pin || ''}${key}`, 10;
+    this.pin = parseInt(`${this.pin || ''}${key}`, 10);
   }
+
 }
