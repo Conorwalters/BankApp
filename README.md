@@ -24,4 +24,4 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 ## Further information
 
-This App used https://github.com/krishna-acondy/mint-app as a API
+This App used https://mnt-api.herokuapp.com/api as a API
