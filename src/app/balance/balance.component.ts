@@ -3,6 +3,9 @@ import { Router } from '@angular/router';
 import { BalanceService } from './balance.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { AppState } from '../state';
+import { Store } from '@ngrx/store';
+import { signOut } from '../state/auth';
 
 @Component({
   selector: 'app-balance',
@@ -13,7 +16,7 @@ export class BalanceComponent {
   currentBalance$: Observable<number>;
   isBalanceLabelVisible = false;
 
-  constructor(public router: Router, public balanceService: BalanceService) {
+  constructor(public router: Router, public balanceService: BalanceService, private store: Store<AppState>) {
     this.currentBalance$ = this.balanceService.CheckBalance().pipe(map((response: any) => response.currentBalance));
   }
 
@@ -24,11 +27,11 @@ export class BalanceComponent {
   }
 
   navigateToWithdraw() {
-    this.router.navigate(['withdraw']);
+    this.router.navigateByUrl('/home');
   }
 
   signout() {
-    this.router.navigate(['pin']);
+    this.store.dispatch(signOut());
   }
 
 }

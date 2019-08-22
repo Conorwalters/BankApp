@@ -1,7 +1,7 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'mnt-keypad',
+  selector: 'app-keypad',
   templateUrl: './keypad.component.html',
   styleUrls: ['./keypad.component.scss']
 })

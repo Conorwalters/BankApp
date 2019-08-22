@@ -1,17 +1,19 @@
-<div class="enter-pin-label">
-    Enter your Pin to access bank:
-</div>
-<br>
-<div class="submit-pin">
-    <input name="PinNumberInput" [(ngModel)]="pin" readonly /> <br>
-</div>
-<div class="error-message" *ngIf="this.errorMessageVisible">
-    <b>Error: {{error}}  </b>
-</div>
-<div>
-    <mnt-keypad class='keypad' (keyPress)='onKeyPressed($event)'></mnt-keypad>
-</div>
-<br>
-<div>
-    <button class="sign-in-button" (click)="submitPin()">Sign In!</button>
-</div>
+<div class='logo'></div>
+<ng-container>
+    <div class='pin-input' *ngIf='(isSignedIn$ | async) === false'>
+        <div class='message'>
+            <span *ngIf='(hasFailedAuth$ | async) === false'>
+                {{ 'signIn.enterPin' | translate }}
+            </span>
+        </div>
+        <input readonly='true' class='textbox pin-textbox' [ngClass]='{"error": (hasFailedAuth$ | async)}' type='number' [value]='pin' placeholder='PIN' />
+        <div class='message warn'>
+            <span *ngIf='hasFailedAuth$ | async'>
+                {{ 'signIn.incorrectPin' | translate }}
+
+                </span>
+        </div>
+        <app-keypad class='keypad' (keyPress)='onKeyPressed($event)'></app-keypad>
+        <button class='button primary sign-in' (click)='onSignInClick()'>{{ 'signIn.signIn' | translate }}</button>
+    </div>
+</ng-container>

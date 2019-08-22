@@ -1,9 +1,9 @@
 <span>
     <h3 class = "withdraw-label">Enter the amount you wish to withdraw: </h3>
 </span>
-<div class="amount-text">
+<div>
     Amount:
-    <input type="text" name="withdrawInput " [(ngModel)]="amount" /> <br>
+    <input class="amount-text" name="withdrawInput " [(ngModel)]="amount" /> <br>
 </div>
 <br>
 <div class="error-message" *ngIf="this.errorMessageVisible">

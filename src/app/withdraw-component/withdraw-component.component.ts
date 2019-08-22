@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { WithdrawService } from './withdraw.service';
+import { AppState } from '../state';
+import { Store } from '@ngrx/store';
+import { signOut } from '../state/auth';
 
 @Component({
   selector: 'app-withdraw-component',
@@ -12,7 +15,7 @@ export class WithdrawComponent {
   amount = '';
   errorMessageVisible = false;
 
-  constructor(public router: Router, public withdrawService: WithdrawService) { }
+  constructor(public router: Router, public withdrawService: WithdrawService,  private store: Store<AppState>) { }
 
   withdraw() {
     this.withdrawService.withdraw(parseInt(this.amount, 10)).subscribe(
@@ -37,6 +40,6 @@ export class WithdrawComponent {
   }
 
   signOut() {
-    this.router.navigate(['pin']);
-  }
+    this.store.dispatch(signOut());
+    }
 }
