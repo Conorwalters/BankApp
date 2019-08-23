@@ -3,7 +3,7 @@
 </span>
 <div>
     Amount:
-    <input class="amount-text" name="withdrawInput " [(ngModel)]="amount" /> <br>
+    <input class="amount-text" name="withdrawInput " #amount /> <br>
 </div>
 <br>
 <div class="error-message" *ngIf="this.errorMessageVisible">

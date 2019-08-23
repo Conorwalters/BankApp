@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { WithdrawService } from './withdraw.service';
 import { AppState } from '../state';
@@ -14,6 +14,8 @@ export class WithdrawComponent {
   error = '';
   amount = '';
   errorMessageVisible = false;
+
+  @ViewChild('amount', {static: false}) amountTextbox: ElementRef;
 
   constructor(public router: Router, public withdrawService: WithdrawService,  private store: Store<AppState>) { }
 

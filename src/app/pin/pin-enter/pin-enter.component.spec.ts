@@ -1,46 +1,39 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { provideMockStore, MockStore } from '@ngrx/store/testing';
 import { PinEnterComponent } from './pin-enter.component';
-import { HttpTestingController, HttpClientTestingModule } from '@angular/common/http/testing';
-import { PinService } from '../pin.service';
+import { Store } from '@ngrx/store';
+import { I18NTestModule } from 'src/app/i18n/i18n-testing-module';
+import { initialAuthState, AuthLogic } from 'src/app/state/auth';
+import { AppState } from 'src/app/state';
+import { KeypadComponent } from 'src/app/keypad/keypad.component';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('PinEnterComponent', () => {
-  let service: PinService;
-  let httpTestingController: HttpTestingController;
+    let component: PinEnterComponent;
+    let fixture: ComponentFixture<PinEnterComponent>;
+    let store: MockStore<AppState>;
 
-  beforeEach((() => {
-    TestBed.configureTestingModule({
-      providers: [PinEnterComponent],
-      imports: [HttpClientTestingModule]
-    });
+    beforeEach(async(() => {
+      TestBed.configureTestingModule({
+        declarations: [ PinEnterComponent, KeypadComponent ],
+        imports: [ I18NTestModule, RouterTestingModule ],
+        providers: [
+          provideMockStore({ initialState: { auth: initialAuthState } })
+        ]
+      });
+    }));
+    beforeEach(() => {
+        fixture = TestBed.createComponent(PinEnterComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+      });
 
-    httpTestingController = TestBed.get(HttpTestingController);
-    service = TestBed.get(PinService);
-  }));
-
-  afterEach(() => {
-    httpTestingController.verify();
-  });
-
-  it('should create withdraw service', () => {
-    expect(service).toBeTruthy();
-  });
-
-  it('should be called with proper arguments', () => {
-    const responseForm = '<form />';
-    const pinservice = TestBed.get(PinService);
-    const http = TestBed.get(HttpTestingController);
-    let pinResponse;
-
-    pinservice.enterPin(1111).subscribe((response) => {
-      pinResponse = response;
-    });
-
-    http.expectOne({
-      url: 'http://localhost:9999/api/pin',
-      method: 'POST'
-    }).flush(responseForm);
-    expect(pinResponse).toEqual(responseForm);
-  });
-
-});
+    it('should create', () => {
+        expect(component).toBeTruthy();
+      });
+    it('should add digit to the current pin when a key is pressed on the keypad', () => {
+        component.pin = 1;
+        component.onKeyPressed(7);
+        expect(component.pin).toEqual(17);
+      });
+})
