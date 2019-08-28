@@ -1,5 +1,6 @@
 .sign-out {
     color: #2e2f3e;
+    background-color: #666;
     padding: 15px 25px;
     text-align: left;
     cursor: pointer;
@@ -10,18 +11,20 @@
     right: 10px;
 }
 
-.sign-out:hover {
-    background-color: #666;
-}
-
-.sign-out:active {
-    background-color: #2e2f3e;
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
+@media only screen and (min-width: 829px) {
+    .sign-out:hover {
+        background-color: #666;
+    }
+    .sign-out:active {
+        background-color: #2e2f3e;
+        box-shadow: 0 5px #666;
+        transform: translateY(4px);
+    }
 }
 
 .withdraw-button {
     color: #2e2f3e;
+    background-color: #666;
     padding: 15px 25px;
     height: 50px;
     text-align: left;
@@ -30,18 +33,20 @@
     box-shadow: 0 9px #999;
 }
 
-.withdraw-button:hover {
-    background-color: #666;
-}
-
-.withdraw-button:active {
-    background-color: #2e2f3e;
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
+@media only screen and (min-width: 829px) {
+    .withdraw-button:hover {
+        background-color: #666;
+    }
+    .withdraw-button:active {
+        background-color: #2e2f3e;
+        box-shadow: 0 5px #666;
+        transform: translateY(4px);
+    }
 }
 
 .check-balance-button {
     color: #2e2f3e;
+    background-color: #666;
     padding: 15px 25px;
     height: 50px;
     text-align: left;
@@ -50,14 +55,15 @@
     box-shadow: 0 9px #999;
 }
 
-.check-balance-button:hover {
-    background-color: #666;
-}
-
-.check-balance-button:active {
-    background-color: #2e2f3e;
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
+@media only screen and (min-width: 829px) {
+    .check-balance-button:hover {
+        background-color: #666;
+    }
+    .check-balance-button:active {
+        background-color: #2e2f3e;
+        box-shadow: 0 5px #666;
+        transform: translateY(4px);
+    }
 }
 
 .error-message {

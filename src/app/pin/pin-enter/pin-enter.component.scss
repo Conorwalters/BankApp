@@ -32,7 +32,8 @@
             margin: 1em;
         }
         .sign-in {
-            color: #2e2f3e;
+            color: #999;
+            background-color: #666;
             padding: 15px 25px;
             text-align: center;
             align-self: center;
@@ -41,13 +42,15 @@
             border-radius: 15px;
             box-shadow: 0 9px #999;
         }
-        .sign-in :hover {
-            background-color: #666;
-        }
-        .sign-in :active {
-            background-color: #2e2f3e;
-            box-shadow: 0 5px #666;
-            transform: translateY(4px);
+        @media only screen and (min-width: 829px) {
+            .sign-out:hover {
+                background-color: #666;
+            }
+            .sign-in :active {
+                background-color: #2e2f3e;
+                box-shadow: 0 5px #666;
+                transform: translateY(4px);
+            }
         }
     }
     @media only screen and (max-width: 1080px) {

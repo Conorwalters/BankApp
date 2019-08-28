@@ -6,19 +6,19 @@
     <input class="amount-text" name="withdrawInput " #amount /> <br>
 </div>
 <br>
-<div class="error-message" *ngIf="this.errorMessageVisible">
+<div class="error-message" *ngIf="this.errorMessageVisible" style="color: white">
     <b>{{error}}</b>
 </div>
 <div>
-    <button class="withdraw-button" (click)="withdraw()">Withdraw! </button>
+    <button class="withdraw-button" (click)="withdraw()" style="color: white">Withdraw! </button>
 </div>
 <br>
 
 <div>
-    <button class="check-balance-button" (click)="balance()">Go to Check Balance!</button>
+    <button class="check-balance-button" (click)="balance()" style="color: white">Go to Check Balance!</button>
 </div>
 <div>
     <div>
-        <button class="sign-out" (click)="signOut()">Sign Out!</button>
+        <button class="sign-out" (click)="signOut()" style="color: white">Sign Out!</button>
     </div>
 </div>
